@@ -1,0 +1,42 @@
+board=[' ',' ',' ',' ',' ',' ',' ',' ',' ']
+boardspace=9
+
+def boardmake():
+
+    global board
+
+    print(' '+board[0]+' | '+board[1]+' | '+board[2])
+    print('-----------')
+    print(' '+board[3]+' | '+board[4]+' | '+board[5])
+    print('-----------')
+    print(' '+board[6]+' | '+board[7]+' | '+board[8])
+
+
+def player1turn():
+    global boardspace
+    print('Player 1 turn...')
+    place1=int(input('Where do you want to place your marker?:'))
+    if board!=' ':
+    	board[place1]='X'
+    	boardspace-=1
+    	boardmake()
+    else:
+    	print('Position taken')
+    	player1turn()
+
+def player2turn():
+    print('Player 2 turn...')
+    place2=int(input('Where do you want to place your marker?:'))
+    if board[place2]==' ':
+    	global boardspace
+    	board[place2]='O'
+    	boardspace-=1
+    	boardmake()
+    else:
+    	print('Position taken')
+    	player2turn()
+
+while boardspace>0:
+    player1turn()
+    if boardspace>0:
+    	player2turn()
